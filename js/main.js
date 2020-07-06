@@ -59,9 +59,10 @@ class MemoryGame {
    
     var interval = setInterval(function () {
         gameTime -= 1;
-      if (timesRun === 160) {
+      if (gameTime === 0) {
         clearInterval(interval);
       }
+      console.log(gameTime)
       //do whatever here..
     }, this.duration);
   }
