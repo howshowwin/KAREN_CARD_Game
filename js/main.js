@@ -48,23 +48,36 @@ function putintocard(_this) {
 
 class MemoryGame {
   constructor() {
-    this.countTime = 180;
+    this.countTime = 180000;
     this.duration = 1000;
     this.cardsContainer = document.querySelector(".js-cards");
     this.cards = Array.from(this.cardsContainer.children);
   }
+  setTimeInDom(time) {
+      console.log(time)
+
+  }
+
   StartCountTime() {
     var gameTime = this.countTime;
-
-   
     var interval = setInterval(function () {
-        gameTime -= 1;
+
+      gameTime -= 10;
+        
+      let min = Math.floor(gameTime / 60000) ;
+      let sec = Math.floor((gameTime - min * 60000) / 1000) ;
+      let secc = (gameTime - min * 60000) / 1000;
+    
+      $('.game__box-min').text( `${min}`)
+      $('.game__box-sec').text(`${sec}`)
+      let a =  Math.floor(secc % 1 *60)
+      $('.game__box-ssec').text(a<10 ? `0${a}` : `${a}`  )
+
       if (gameTime === 0) {
         clearInterval(interval);
       }
-      console.log(gameTime)
-      //do whatever here..
-    }, this.duration);
+    }, 10);
+
   }
 
   shuffleCards() {
