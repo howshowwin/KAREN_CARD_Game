@@ -1,49 +1,33 @@
 const arrA = [
-  ["團隊合作", "Teamwork"],
-  ["團隊合作", "Teamwork"],
-
-  ["熱情", "Passion"],
-  ["熱情", "Passion"],
-
-  ["榮譽", "Honer"],
-  ["榮譽", "Honer"],
-
-  ["創新", "Innovation"],
-  ["創新", "Innovation"],
-
-  ["速度", "Speed"],
-  ["速度", "Speed"],
-
-  ["承諾", "Commmitment"],
-  ["承諾", "Commmitment"],
-
-  ["企業道德", "Bussiness Ethics"],
-  ["企業道德", "Bussiness Ethics"],
-
-  ["執行力", "Excution"],
-  ["執行力", "Excution"],
-
-  ["專注", "Focus"],
-  ["專注", "Focus"],
-
-  ["勇氣", "Courage"],
-  ["勇氣", "Courage"],
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20,
 ];
-var numbersCopy = arrA.map((x) => x);
 
-function putintocard(_this) {
-  if (_this.hasClass("choose")) {
-  } else {
-    let index = Math.floor(Math.random() * numbersCopy.length);
-    let putin = numbersCopy[index];
+function putintocard() {
+  let numbersCopy = arrA.map((x) => x);
 
-    numbersCopy.splice(index, 1);
-    _this.addClass("choose");
-    _this.append(`
-        <h3>${putin[0]}</h3>
-        <p>${putin[1]}</p>
-        `);
-  }
+  let index = Math.floor(Math.random() * numbersCopy.length);
+  let putin = numbersCopy[index];
+
+  numbersCopy.splice(index, 1);
 }
 
 class MemoryGame {
@@ -54,42 +38,58 @@ class MemoryGame {
     this.cards = Array.from(this.cardsContainer.children);
   }
   setTimeInDom(time) {
-      console.log(time)
-
+    console.log(time);
   }
 
   StartCountTime() {
     var gameTime = this.countTime;
     var interval = setInterval(function () {
-
       gameTime -= 10;
-        
-      let min = Math.floor(gameTime / 60000) ;
-      let sec = Math.floor((gameTime - min * 60000) / 1000) ;
+
+      let min = Math.floor(gameTime / 60000);
+      let sec = Math.floor((gameTime - min * 60000) / 1000);
       let secc = (gameTime - min * 60000) / 1000;
-    
-      $('.game__box-min').text( `${min}`)
-      $('.game__box-sec').text(`${sec}`)
-      let a =  Math.floor(secc % 1 *60)
-      $('.game__box-ssec').text(a<10 ? `0${a}` : `${a}`  )
+
+      $(".game__box-min").text(`${min}`);
+      $(".game__box-sec").text(`${sec < 10 ? `0${sec}` : `${sec}`}`);
+      let a = Math.floor((secc % 1) * 60);
+      $(".game__box-ssec").text(a < 10 ? `0${a}` : `${a}`);
 
       if (gameTime === 0) {
         clearInterval(interval);
       }
     }, 10);
-
   }
 
   shuffleCards() {
+    let numbersCopy = arrA.map((x) => x);
+
     this.cards.forEach((card) => {
-      const randomNumber = Math.floor(Math.random() * this.cards.length) + 1;
+      let index = Math.floor(Math.random() * numbersCopy.length);
+      let putin = numbersCopy[index];
+
+      numbersCopy.splice(index, 1);
 
       card.classList.remove("has-match");
-
+      card.classList.remove("check");
+    
       setTimeout(() => {
-        card.style.order = `${randomNumber}`;
+        card.style.order = `${putin}`;
+        // card.style.background = `url('../images/game-2.jpg')`;
+        // card.style.backgroundSize = "cover";
       }, 400);
     });
+    setTimeout(() => {
+      for (var i = 0; i < 20; i++) {
+        let a = $(".game__card").eq(i).css("order")
+  
+        $(".game__back-card").eq(i).css({
+             background : `url('../images/game-${a}.jpg')`,
+             backgroundSize : "cover",
+        });
+      }
+    }, 500);
+  
   }
 
   checkAllCards() {
@@ -116,11 +116,22 @@ class MemoryGame {
       firstCard.classList.add("has-match");
       secondCard.classList.add("has-match");
 
+      firstCard.classList.add("check");
+      secondCard.classList.add("check");
+
+ 
+
       this.checkAllCards();
     } else {
+      firstCard.classList.add("false");
+      secondCard.classList.add("false");
       setTimeout(() => {
         firstCard.classList.remove("flipped");
         secondCard.classList.remove("flipped");
+
+        firstCard.classList.remove("false");
+        secondCard.classList.remove("false");
+      
       }, this.duration);
     }
   }
@@ -145,5 +156,3 @@ game.cards.forEach((card) => {
   card.addEventListener("click", game.flip.bind(game, card));
 });
 
-game.shuffleCards();
-game.StartCountTime();

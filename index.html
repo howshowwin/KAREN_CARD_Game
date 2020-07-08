@@ -1,190 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="css/game.css">
-</head>
-<body>
-   
-    <main class="game">
-        <section class="game__box">
-            <div class="game__box-min">00</div>
-            <div class="game__box-sec">00</div>
-            <div class="game__box-ssec">00</div>
-        </section>
+    <link rel="stylesheet" href="css/game.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+  </head>
+  <body>
+    <div id="game-page">
+      <div class="bgc-mask-top">
+        <div class="bgc-mask-bottom">
+          <main class="introduce">
+            <img class="introduce-drop" src="images/bgc_drop.png" alt="" />
+            <div class="introduce-container">
+              <img class="introduce-title" src="images/title.png" alt="" />
 
-        <section class="game__cards js-cards">
-    
-            <div class="game__card js-card" data-msi="Teamwork">
-                <div class="game__back-card">
+              <div class="introduce__blocks">
+                <div class="introduce__item">
+                  <div class="introduce__item-title">
+                    <img src="images/little_1.png" alt="" />
+                  </div>
+                  <div class="introduce__item-text">
+                    <p>
+                      <span>
+                        登錄帳號: 公司網域帳號、密碼: 公司網域密碼
+                      </span>
+                      <br />
+                      <span>
+                        登錄後最多可連續進行遊戲3次，參加即可獲得積分5點。
+                      </span>
+                    </p>
+                    <h4>
+                      速度最快前五名依序可獲得16-20點加碼。<span class="smaller"
+                        >(如表格)</span
+                      >
+                    </h4>
+                    <img src="images/waityou.png" alt="" />
+                  </div>
+                </div>
+                <div class="introduce__item">
+                  <img src="images/little_3.png" alt="" />
+                </div>
+              </div>
 
+              <div class="introduce__block">
+                <div class="introduce__item-title">
+                  <img src="images/little_2.png" alt="" />
                 </div>
-                <div class="game__front-card">
-                    團隊合作 
+                <div class="introduce__item-text">
+                  <p>
+                    <span>
+                      鼠標左鍵點擊翻牌，連續點擊到兩張相同的牌即可消除。
+                    </span>
+                  </p>
                 </div>
+              </div>
             </div>
-    
-            <div class="game__card js-card" data-msi="Teamwork">
-                <div class="game__back-card">
+          </main>
+
+          <div class="frame">
+            <section class="frame__mask">
+                <div class="frame__mask-bgc"></div>
+                <div class="frame__mask-btn">
+                    <img src="images/game-start.png" alt="">
                 </div>
-                <div class="game__front-card">
+                <div class="frame__mask-dra">
+                    <img  src="images/game-gra.png" alt="">
+                </div>
+            </section>
+
+
+            <section class="frame__title">
+                <img src="images/game-title.png" alt="">
+            </section>
+
+
+            <section class="game__box">
+                <div class="game__box-item">
+                    <div class="game__box-min">00</div>
+                    <div class="game__box-sec">00</div>
+                    <div class="game__box-ssec">00</div>
+                </div>
+                <div class="game__box-item">00</div>
+            </section>
+
+
+            <main class="game">
+              <section class="game__cards js-cards">
+                <div class="game__card js-card animate__animated" data-msi="Teamwork">
+                  <div class="game__back-card"></div>
+                  <div class="game__front-card">
                     團隊合作
+                  </div>
                 </div>
-            </div>
-    
-            <div class="game__card js-card" data-msi="Passion">
-                <div class="game__back-card">
+
+                <div class="game__card js-card animate__animated" data-msi="Teamwork">
+                  <div class="game__back-card"></div>
+                  <div class="game__front-card">
+                    團隊合作
+                  </div>
                 </div>
-                <div class="game__front-card">
+
+                <div class="game__card js-card animate__animated" data-msi="Passion">
+                  <div class="game__back-card"></div>
+                  <div class="game__front-card">
                     熱情
+                  </div>
                 </div>
-            </div>
-    
-            <div class="game__card js-card" data-msi="Passion">
-                <div class="game__back-card">
-                </div>
-                <div class="game__front-card">
+
+                <div class="game__card js-card animate__animated" data-msi="Passion">
+                  <div class="game__back-card"></div>
+                  <div class="game__front-card">
                     熱情
+                  </div>
                 </div>
-            </div>
-    
-            <div class="game__card js-card" data-msi="Honer">
-                <div class="game__back-card">
-                </div>
-                <div class="game__front-card">
+
+                <div class="game__card js-card animate__animated" data-msi="Honer">
+                  <div class="game__back-card"></div>
+                  <div class="game__front-card">
                     榮譽
+                  </div>
                 </div>
-            </div>
-    
-            <div class="game__card js-card" data-msi="Honer">
-                <div class="game__back-card">
-                </div>
-                <div class="game__front-card">
+
+                <div class="game__card js-card animate__animated" data-msi="Honer">
+                  <div class="game__back-card"></div>
+                  <div class="game__front-card">
                     榮譽
+                  </div>
                 </div>
-            </div>
-    
-            <div class="game__card js-card" data-msi="Innovation">
-                <div class="game__back-card">
-                </div>
-                <div class="game__front-card">
+
+                <div class="game__card js-card animate__animated" data-msi="Innovation">
+                  <div class="game__back-card"></div>
+                  <div class="game__front-card">
                     創新
+                  </div>
                 </div>
-            </div>
-    
-            <div class="game__card js-card" data-msi="Innovation">
-                <div class="game__back-card">
-                </div>
-                <div class="game__front-card">
+
+                <div class="game__card js-card animate__animated" data-msi="Innovation">
+                  <div class="game__back-card"></div>
+                  <div class="game__front-card">
                     創新
+                  </div>
                 </div>
-            </div>
-    
-            <div class="game__card js-card" data-msi="Speed">
-                <div class="game__back-card">
-                </div>
-                <div class="game__front-card">
+
+                <div class="game__card js-card animate__animated" data-msi="Speed">
+                  <div class="game__back-card"></div>
+                  <div class="game__front-card">
                     速度
+                  </div>
                 </div>
-            </div>
-    
-            <div class="game__card js-card" data-msi="Speed">
-                <div class="game__back-card">
-                </div>
-                <div class="game__front-card">
+
+                <div class="game__card js-card animate__animated" data-msi="Speed">
+                  <div class="game__back-card"></div>
+                  <div class="game__front-card">
                     速度
+                  </div>
                 </div>
-            </div>
-    
-            <div class="game__card js-card" data-msi="Commmitment">
-                <div class="game__back-card">
-                </div>
-                <div class="game__front-card">
+
+                <div class="game__card js-card animate__animated" data-msi="Commmitment">
+                  <div class="game__back-card"></div>
+                  <div class="game__front-card">
                     承諾
+                  </div>
                 </div>
-            </div>
-    
-            <div class="game__card js-card" data-msi="Commmitment">
-                <div class="game__back-card">
-                </div>
-                <div class="game__front-card">
+
+                <div class="game__card js-card animate__animated" data-msi="Commmitment">
+                  <div class="game__back-card"></div>
+                  <div class="game__front-card">
                     承諾
+                  </div>
                 </div>
-            </div>
-    
-            <div class="game__card js-card" data-msi="Bussiness Ethics">
-                <div class="game__back-card">
-                </div>
-                <div class="game__front-card">
+
+                <div class="game__card js-card animate__animated" data-msi="Bussiness Ethics">
+                  <div class="game__back-card"></div>
+                  <div class="game__front-card">
                     企業道德
+                  </div>
                 </div>
-            </div>
-    
-            <div class="game__card js-card" data-msi="Bussiness Ethics">
-                <div class="game__back-card">
-                </div>
-                <div class="game__front-card">
+
+                <div class="game__card js-card animate__animated" data-msi="Bussiness Ethics">
+                  <div class="game__back-card"></div>
+                  <div class="game__front-card">
                     企業道德
+                  </div>
                 </div>
-            </div>
-    
-            <div class="game__card js-card" data-msi="Excution">
-                <div class="game__back-card">
-                </div>
-                <div class="game__front-card">
+
+                <div class="game__card js-card animate__animated" data-msi="Excution">
+                  <div class="game__back-card"></div>
+                  <div class="game__front-card">
                     執行力
+                  </div>
                 </div>
-            </div>
-    
-            <div class="game__card js-card" data-msi="Excution">
-                <div class="game__back-card">
-                </div>
-                <div class="game__front-card">
+
+                <div class="game__card js-card animate__animated" data-msi="Excution">
+                  <div class="game__back-card"></div>
+                  <div class="game__front-card">
                     執行力
+                  </div>
                 </div>
-            </div>
-    
-            <div class="game__card js-card" data-msi="Focus">
-                <div class="game__back-card">
-                </div>
-                <div class="game__front-card">
+
+                <div class="game__card js-card animate__animated" data-msi="Focus">
+                  <div class="game__back-card"></div>
+                  <div class="game__front-card">
                     專注
+                  </div>
                 </div>
-            </div>
-    
-            <div class="game__card js-card" data-msi="Focus">
-                <div class="game__back-card">
-                </div>
-                <div class="game__front-card">
+
+                <div class="game__card js-card animate__animated" data-msi="Focus">
+                  <div class="game__back-card"></div>
+                  <div class="game__front-card">
                     專注
+                  </div>
                 </div>
-            </div>
-    
-            <div class="game__card js-card" data-msi="Courage">
-                <div class="game__back-card">
-                </div>
-                <div class="game__front-card">
+
+                <div class="game__card js-card animate__animated" data-msi="Courage">
+                  <div class="game__back-card"></div>
+                  <div class="game__front-card">
                     勇氣
+                  </div>
                 </div>
-            </div>
-    
-            <div class="game__card js-card" data-msi="Courage">
-                <div class="game__back-card">
-                </div>
-                <div class="game__front-card">
+
+                <div class="game__card js-card animate__animated" data-msi="Courage">
+                  <div class="game__back-card"></div>
+                  <div class="game__front-card">
                     勇氣
+                  </div>
                 </div>
-            </div>
-    
-        </section>
-    
-    </main>
-    
+              </section>
+            </main>
+            <section class="game__footer">
+                <img src="images/game-logo.png" alt="">
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script src="js/jquery.js"></script>
+    <script src="js/resize.js"></script>
     <script src="js/main.js"></script>
     <script src="js/sec.js"></script>
-</body>
+    <script src="js/event.js"></script>
+  </body>
 </html>
