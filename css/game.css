@@ -9,6 +9,9 @@
           animation: flash;
   -webkit-animation-duration: 1s;
           animation-duration: 1s;
+}
+
+.check .game__front-card {
   -webkit-box-shadow: 0 0 10px #61af59;
           box-shadow: 0 0 10px #61af59;
 }
@@ -18,6 +21,9 @@
           animation: headShake;
   -webkit-animation-duration: 1s;
           animation-duration: 1s;
+}
+
+.false .game__front-card {
   -webkit-box-shadow: 0 0 10px #f83434;
           box-shadow: 0 0 10px #f83434;
 }

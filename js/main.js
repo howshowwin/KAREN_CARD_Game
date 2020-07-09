@@ -21,15 +21,6 @@ const arrA = [
   20,
 ];
 
-function putintocard() {
-  let numbersCopy = arrA.map((x) => x);
-
-  let index = Math.floor(Math.random() * numbersCopy.length);
-  let putin = numbersCopy[index];
-
-  numbersCopy.splice(index, 1);
-}
-
 class MemoryGame {
   constructor() {
     this.countTime = 180000;
@@ -37,8 +28,13 @@ class MemoryGame {
     this.cardsContainer = document.querySelector(".js-cards");
     this.cards = Array.from(this.cardsContainer.children);
   }
-  setTimeInDom(time) {
-    console.log(time);
+  setDiminishing() {
+    let a = []
+    this.cards.forEach(function (card ) {
+      if (card.classList.contains("has-match")) {
+        a.push()
+      }
+    });
   }
 
   StartCountTime() {
@@ -72,24 +68,23 @@ class MemoryGame {
 
       card.classList.remove("has-match");
       card.classList.remove("check");
-    
+
       setTimeout(() => {
         card.style.order = `${putin}`;
-        // card.style.background = `url('../images/game-2.jpg')`;
-        // card.style.backgroundSize = "cover";
       }, 400);
     });
     setTimeout(() => {
       for (var i = 0; i < 20; i++) {
-        let a = $(".game__card").eq(i).css("order")
-  
-        $(".game__back-card").eq(i).css({
-             background : `url('./images/game-${a}.jpg')`,
-             backgroundSize : "cover",
-        });
+        let a = $(".game__card").eq(i).css("order");
+
+        $(".game__back-card")
+          .eq(i)
+          .css({
+            background: `url('./images/game-${a}.jpg')`,
+            backgroundSize: "cover",
+          });
       }
     }, 500);
-  
   }
 
   checkAllCards() {
@@ -119,9 +114,8 @@ class MemoryGame {
       firstCard.classList.add("check");
       secondCard.classList.add("check");
 
- 
-
       this.checkAllCards();
+      this.setDiminishing();
     } else {
       firstCard.classList.add("false");
       secondCard.classList.add("false");
@@ -131,7 +125,6 @@ class MemoryGame {
 
         firstCard.classList.remove("false");
         secondCard.classList.remove("false");
-      
       }, this.duration);
     }
   }

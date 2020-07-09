@@ -6,14 +6,18 @@
 	animation: flash;
 	animation-duration: 1s;
 
+}
+.check .game__front-card{
 	box-shadow: 0 0 10px #61af59; 
 }
 .false{
 	animation: headShake;
 	animation-duration: 1s;
 
-	box-shadow: 0 0 10px #f83434; 
 
+}
+.false .game__front-card{
+	box-shadow: 0 0 10px #f83434; 
 }
 body {
   margin: 0;
