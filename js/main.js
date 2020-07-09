@@ -84,7 +84,7 @@ class MemoryGame {
         let a = $(".game__card").eq(i).css("order")
   
         $(".game__back-card").eq(i).css({
-             background : `url('images/game-${a}.jpg')`,
+             background : `url('./images/game-${a}.jpg')`,
              backgroundSize : "cover",
         });
       }
@@ -156,3 +156,4 @@ game.cards.forEach((card) => {
   card.addEventListener("click", game.flip.bind(game, card));
 });
 
+game.shuffleCards();
