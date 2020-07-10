@@ -13,6 +13,7 @@ $(".scoreboard__lightbox-btn").on("click", function () {
   setTimeout(() => {
     $(".scoreboard").addClass("displaynone");
   }, 1000);
+  $("#game__diminishing").text('10');
   game.shuffleCards();
   gameStart = 1;
 

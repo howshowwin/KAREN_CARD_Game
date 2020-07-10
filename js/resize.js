@@ -26,6 +26,7 @@ function convertSizeALL(className) {
         $('.game__box').css({ width: Math.round(1000* sRatio),fontSize:`${Math.round(36* sRatio)}px`});
         $('.frame').css({ width: Math.round(1100* sRatio)});
         $('.frame__mask-dra').css({ width: Math.round(400* sRatio),height: Math.round(350* sRatio) })
+        $('.game__front-card').css({fontSize:`${Math.round(20 * sRatio)}px `})
     
 }
 

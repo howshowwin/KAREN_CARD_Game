@@ -134,6 +134,10 @@ svg {
   transition: transform 400ms, -webkit-transform 400ms;
   -webkit-box-shadow: 0 0 20px #eee, 0 0 5px #ccc;
           box-shadow: 0 0 20px #eee, 0 0 5px #ccc;
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: 900;
+  text-align: center;
+  color: #fff;
 }
 
 .game__back-card {
@@ -143,6 +147,7 @@ svg {
 .game__front-card {
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
+  background: #77787b;
 }
 
 .game__box {
@@ -529,6 +534,9 @@ svg {
   }
   .game__footer {
     width: 100px;
+  }
+  .game__front-card {
+    font-family: "微軟正黑體";
   }
 }
 
