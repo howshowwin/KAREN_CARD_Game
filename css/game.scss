@@ -1,23 +1,22 @@
 * {
   box-sizing: border-box;
 }
-.check{
-
-	animation: flash;
-	animation-duration: 1s;
-
+.displaynone{
+  display: none !important;
 }
-.check .game__front-card{
-	box-shadow: 0 0 10px #61af59; 
+.check {
+  animation: flash;
+  animation-duration: 1s;
 }
-.false{
-	animation: headShake;
-	animation-duration: 1s;
-
-
+.check .game__front-card {
+  box-shadow: 0 0 10px #61af59;
 }
-.false .game__front-card{
-	box-shadow: 0 0 10px #f83434; 
+.false {
+  animation: headShake;
+  animation-duration: 1s;
+}
+.false .game__front-card {
+  box-shadow: 0 0 10px #f83434;
 }
 body {
   margin: 0;
@@ -251,39 +250,174 @@ svg {
     top: 0;
     z-index: 5;
     height: 100%;
-	width: 100%;
+    width: 100%;
     &-bgc {
       height: 100%;
       width: 100%;
       background: #00000080;
-	}
-	&-btn{
-		position: absolute;
-		top: 57%;
-		left: 50%;
-		cursor: pointer;
-		transform: translate(-50%,-50%);
-		width: 300px;
-		img{
-			width: 100%;
-		}
-	}
-	&-dra{
-		pointer-events: none;
+    }
+    &-btn {
+      position: absolute;
+      top: 57%;
+      left: 50%;
+      cursor: pointer;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      img {
+        width: 100%;
+      }
+    }
+    &-dra {
+      pointer-events: none;
 
-		position: absolute;
-		bottom: 0;
-		right: 0;
-		width: 400px;
-		overflow: hidden;
-		height: 350px;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 400px;
+      overflow: hidden;
+      height: 350px;
 
-		img{
-			width: 110%;
-		}
-	}
+      img {
+        width: 110%;
+      }
+    }
+  }
+  &__scoreboard {
+    position: absolute;
+    top: 0;
+    z-index: 6;
+    height: 100%;
+    width: 100%;
+    background: #ccc;
   }
 }
+
+.scoreboard {
+  padding: 0 20px;
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #22222280;
+  &__lightbox {
+    max-width: 1100px;
+    height: 70vh;
+    background: url("../images/pointbgc.jpg");
+    background-position: center;
+    background-size: cover;
+    margin: auto;
+    transform: translateY(20%);
+    position: relative;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%,-50%);
+    border-radius: 20px;
+    box-shadow: 0 0 20px 100px #00000040;
+    &::after {
+      content: "";
+      width: 40%;
+      padding-bottom: 50%;
+      display: block;
+
+      background: url("../images/draCelebrate.png");
+      background-size: cover;
+
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 5%;
+    }
+    &-btn{
+      background: linear-gradient(135deg, rgba(166,22,255,1) 0%,rgba(45,80,237,1) 100%);
+      width: 200px;
+      height: 50px;
+      cursor: pointer;
+      border-radius: 4px;
+
+      font-family: "Noto Sans TC", sans-serif;
+      font-weight: 900;
+      font-size: 26px;
+
+      color: #eee;
+
+      z-index: 21;
+
+      text-shadow: 2px 2px #333;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%,-20px);
+
+      box-shadow: 3px 3px #9db0d7;
+    }
+    &-last{
+      width: 200px;
+      height: 20px;
+      border-radius: 4px;
+
+      font-family:  "微軟正黑體";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%,-75px);
+
+      text-align: center;
+      &count{
+        font-family: "Noto Sans TC", sans-serif;
+        font-weight: 900;
+      }
+    }
+    &__block {
+      padding: 70px 100px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+    &-item {
+      width: 500px;
+      height: 49.2px;
+      display: flex;
+      b {
+        width: 50%;
+      }
+      p {
+        font-family: "Noto Sans TC", sans-serif;
+        font-weight: 900;
+        font-size: 20px;
+        line-height: 0;
+      }
+      &--date {
+        background: url("../images/point-date.png");
+        background-size: cover;
+      }
+      &--account {
+        background: url("../images/point-account.png");
+        background-size: cover;
+      }
+      &--best {
+        background: url("../images/point-best.png");
+        background-size: cover;
+      }
+      &--number {
+        background: url("../images/point-no1.png");
+        background-size: cover;
+      }
+      &--now {
+        background: url("../images/point-now.png");
+        background-size: cover;
+      }
+    }
+  }
+}
+
 @media (max-width: 1324px) {
   .frame::before {
     display: none;
@@ -334,6 +468,78 @@ svg {
   .introduce {
     &-container {
       max-width: 1440px;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .scoreboard {
+    &__lightbox {
+      &__block {
+        padding: 80px 50px;
+      }
+      &-item {
+      }
+    }
+  }
+}
+@media (max-width: 991px) {
+  .scoreboard {
+    &__lightbox {
+      &::after {
+        content: "";
+        width: 40%;
+        padding-bottom: 50%;
+        display: block;
+
+        background: url("../images/draCelebrate.png");
+        background-size: cover;
+
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      &__block {
+        padding: 200px 20px 100px 20px;
+        align-items: center;
+      }
+      &-item {
+      }
+    }
+  }
+}
+@media (max-width: 675px) {
+  
+  .scoreboard__lightbox-btn{
+    width: 90%;
+  }
+  .scoreboard {
+    &__lightbox {
+      &__block {
+      }
+      &-item {
+        width: 100%;
+        height: 0;
+        padding-bottom: 10%;
+        background-position: center;
+      }
+    }
+  }
+}
+@media (max-width: 475px) {
+
+  .scoreboard {
+    &__lightbox {
+      &__block {
+        padding: 150px 20px 200px 20px;
+
+      }
+      &-item {
+        p {
+          font-size: 16px;
+        }
+      }
     }
   }
 }
