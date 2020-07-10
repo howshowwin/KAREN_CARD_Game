@@ -21,11 +21,12 @@ const arrA = [
   20,
 ];
 // 參數管理
-var timeCount = 0
-var gameStart = 0
+var timeCount = 0;
+var gameStart = 0;
 var gameTime = 180000;
 var d = new Date();
-
+var idle = false;
+var finish = false;
 function startCountTime() {
   gameTime = 180000;
   this.timeCount = false;
@@ -43,49 +44,46 @@ function startCountTime() {
 
     if (gameTime === 0) {
       clearInterval(interval);
-      game.gameOver() 
+      game.gameOver();
     }
-    if (timeCount == 1 ) {
+    if (timeCount == 1) {
       clearInterval(interval);
     }
   }, 10);
 }
 
+inactivityTime();
+function inactivityTime() {
+  var t;
+  window.onload = resetTimer;
+  // DOM Events
+  window.onmousemove = resetTimer;
+  window.onkeypress = resetTimer;
+  window.onmousedown = resetTimer; // catches touchscreen presses
+  window.onclick = resetTimer; // catches touchpad clicks
 
-
-inactivityTime ();
-function inactivityTime () {
-    var t;
-    window.onload = resetTimer;
-    // DOM Events
-    window.onmousemove = resetTimer;
-    window.onkeypress = resetTimer;
-    window.onmousedown = resetTimer; // catches touchscreen presses
-    window.onclick = resetTimer;     // catches touchpad clicks
-
-    function logout() {
-        //alert("You are now logged out.")
-        if( gameStart==1){
-          console.log("ongame")
-          timeCount = 1
-          game.gameOver("閒置超時") 
-
-        }else if(gameStart  == 0 ){
-          console.log('notongame')
-        }
+  function logout() {
+    //alert("You are now logged out.")
+    if (gameStart == 1) {
+      console.log("ongame");
+      timeCount = 1;
+      idle = true;
+      game.gameOver();
+    } else if (gameStart == 0) {
+      console.log("notongame");
     }
+  }
 
-    function resetTimer() {
-        clearTimeout(t);
-        var sessionTimeoutWarning = 1; //min
-        var sTimeout = parseInt(sessionTimeoutWarning) * 60 * 1000;
-        // var sTimeout = 5000;
-        
-        t = setTimeout(logout, sTimeout);
-        // 1000 milisec = 1 sec         
-    }
-};
+  function resetTimer() {
+    clearTimeout(t);
+    var sessionTimeoutWarning = 1; //min
+    // var sTimeout = parseInt(sessionTimeoutWarning) * 60 * 1000;
+    var sTimeout = 5000;
 
+    t = setTimeout(logout, sTimeout);
+    // 1000 milisec = 1 sec
+  }
+}
 
 class MemoryGame {
   constructor() {
@@ -94,27 +92,28 @@ class MemoryGame {
     this.cards = Array.from(this.cardsContainer.children);
     this.timeCount = false;
   }
-  gameOver(idle) {
-    gameStart = 0
-    end.play()
+  gameOver() {
+    gameStart = 0;
+    end.play();
     // 資料串接這
-    let gameTimeNow = 180000 - gameTime   
+    let gameTimeNow = 180000 - gameTime;
     let min = Math.floor(gameTimeNow / 60000);
     let sec = Math.floor((gameTimeNow - min * 60000) / 1000);
-    if(idle!=true){
-      $('.scoreboard__lightbox-item--now p').text(idle) 
-    }else{
-      $('.scoreboard__lightbox-item--now p').text(`${min}分${sec}秒`) 
-
+    if (idle == true) {
+      $(".scoreboard__lightbox-item--now p").text("閒置超時");
     }
-    $('.scoreboard__lightbox-item--date p').text(`${d.getFullYear()}/ ${d.getMonth()+1}/ ${d.getDate()}`) 
-
-
+    if (finish == true) {
+      $(".scoreboard__lightbox-item--now p").text(`${min}分${sec}秒`);
+    }
+    finish = false;
+    idle = false;
+    $(".scoreboard__lightbox-item--date p").text(
+      `${d.getFullYear()}/ ${d.getMonth() + 1}/ ${d.getDate()}`
+    );
 
     $(".scoreboard")
       .removeClass("displaynone animate__bounceOut")
       .addClass("animate__fadeIn");
-   
   }
 
   setDiminishing() {
@@ -127,8 +126,6 @@ class MemoryGame {
     a = 10 - a / 2;
     $("#game__diminishing").text(a < 10 ? `0${a}` : a);
   }
-
-
 
   shuffleCards() {
     let numbersCopy = arrA.map((x) => x);
@@ -163,7 +160,8 @@ class MemoryGame {
   checkAllCards() {
     if (this.cards.every((card) => card.classList.contains("has-match"))) {
       setTimeout(() => {
-        timeCount = 1
+        finish = true
+        timeCount = 1;
         this.gameOver();
         // this.shuffleCards();
       }, this.duration);
@@ -188,13 +186,13 @@ class MemoryGame {
 
       firstCard.classList.add("check");
       secondCard.classList.add("check");
-      tureclick.play()
+      tureclick.play();
       this.checkAllCards();
       this.setDiminishing();
     } else {
       firstCard.classList.add("false");
       secondCard.classList.add("false");
-      falseclick.play()
+      falseclick.play();
 
       setTimeout(() => {
         firstCard.classList.remove("flipped");
@@ -212,7 +210,7 @@ class MemoryGame {
     const flippedCards = this.cards.filter((card) =>
       card.classList.contains("flipped")
     );
-    clickfirst.play()
+    clickfirst.play();
     if (flippedCards.length === 2) {
       this.stopEvent();
       this.checkIfMatched(flippedCards[0], flippedCards[1]);
